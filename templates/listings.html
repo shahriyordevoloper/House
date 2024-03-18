@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3><a href="/add-listing/" class="text-blue-500">CREATE</a></h3>
+
+<form action="" method="GET">
+    <input type="text" name="location" placeholder="Location">
+    <input type="number" name="Min" placeholder="Min price">
+    <input type="number" name="Max" placeholder="Max price">
+    <input type="submit" value="submit" style="border: none; background-color: rgb(193, 193, 193);">
+</form>
+
+{% for listing in listings %}
+
+<div class="mt-2 px-3 py-2 bg-gray-100 rounded-sm">
+    <h3 class="text-3xl text-gray-900">{{ listing.title }}</h3>
+    <img src="{{ listing.image.url }}" alt="" />
+    <a href="/listings/{{ listing.id }}/" class="text-blue-500">
+        READ
+    </a>
+    <a href="/listings/{{ listing.id }}/edit" class="text-blue-500">
+        UPDATE
+    </a>
+    <a href="/listings/{{ listing.id }}/delete" class="text-blue-500">
+        DELETE
+    </a>
+</div>
+
+{% endfor %}
+
+{% endblock content %}
